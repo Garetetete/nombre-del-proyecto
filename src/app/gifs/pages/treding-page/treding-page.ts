@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { GifList } from '../../components/gif-list/gif-list';
+import { Gifs } from '../../services/gifs';
 
 // Definimos el array de URLs fuera de la clase para mantenerlo limpio,
 // simulando los datos que obtendrías de un servicio.
@@ -25,15 +26,10 @@ const imageUrls: string[] = [
     styles: ``
 })
 export default class TredingPage {
+    gifService = inject(Gifs);
 
-    /**
-     * 👉 SOLUCIÓN: Creamos un getter llamado 'gifs' que devuelve el array de URLs.
-     * Esto satisface la llamada en el template: [gifs]="gifs()"
-     */
     public get gifs() {
-        // En una aplicación real, esto devolvería el array de GIFs
-        // de un servicio (ej: return this.gifsService.gifList).
-        // Por ahora, devolvemos el array local.
+
         return imageUrls; 
     }
 }
